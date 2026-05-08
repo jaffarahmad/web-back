@@ -9,8 +9,9 @@ const startServer = async () => {
     await prisma.$connect();
     console.log('MongoDB Connected via Prisma...');
 
-    const server = app.listen(PORT, () => {
-      console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+    const server = app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+      console.log('Press CTRL-C to stop');
     });
 
     // Handle unhandled promise rejections

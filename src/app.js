@@ -26,6 +26,11 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Health check route
+app.get('/', (req, res) => {
+  res.status(200).json({ status: 'success', message: 'Saudi Services API is running' });
+});
+
 // Mount routers
 app.use('/api', routes);
 
